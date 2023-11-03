@@ -1,13 +1,18 @@
 import yagmail
+import datetime
+import time
 import os
 
 sender = 'alabivgoro3@Gmail.com'
 receiver = 'victoralabi03@gmail.com'
 subject = 'This is a test project'
-content = "Here is a test content for the automated email using python"
-
+date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+content = "This message was sent at ", date
 yag = yagmail.SMTP(user=sender, password=os.getenv('Password'))
-yag.send(to=receiver, subject=subject, contents=content)
 
-print("Email sent!")
+while True:
+    yag.send(to=receiver, subject=subject, contents=content)
+    print("Email sent!")
+    time.sleep(30)
+
 
